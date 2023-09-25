@@ -1,0 +1,45 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin: 0 auto;
+  width: 500px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+a {
+  display:block;
+border: 1px solid #ccc;
+width: 95%;
+padding: 10px;
+margin-bottom: 10px;
+background-color: #000;
+color: #fff;
+cursor: pointer;
+text-decoration:none;
+}
