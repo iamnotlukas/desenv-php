@@ -1,0 +1,63 @@
+/* Estilos gerais */
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  
+  /* Estilos do formulário */
+  
+  form {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #000;
+  }
+  
+  .btn {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #333;
+  }
+  
+  /* Estilos específicos */
+  
+  h1 {
+    text-align: center;
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form input {
+    margin-bottom: 10px;
+  }
+  
