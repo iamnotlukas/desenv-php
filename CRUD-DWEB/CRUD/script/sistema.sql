@@ -19,3 +19,5 @@ CREATE TABLE IF NOT EXISTS produto
   vlProduto NUMERIC(10,2) NOT NULL,
   imgLink VARCHAR(255) NOT NULL
 )
+
+

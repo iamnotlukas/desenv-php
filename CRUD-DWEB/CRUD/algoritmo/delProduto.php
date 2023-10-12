@@ -9,9 +9,9 @@
 <body>
   <h1>Deletar Produto</h1>
  <form action="#" method="post" style="width: inherit;margin: 0 auto;display: contents;">
-    <label>Informe o nome do Produto:</label>
+    <label>Informe o ID do Produto:</label>
     <br>
-    <input type="text" name="txtDeletarProduto" spellcheck="false" data-ms-editor="true">
+    <input type="number" name="txtDeletarProduto">
     <br><br>
     <input type="submit" value="Deletar" name="btnDeletar">
     <a href="index.php">
@@ -22,32 +22,37 @@
 </html>
 
 <?php
-if (!empty($_POST['btnDeletar'])){
-  try{
 
-    //incluir o arquivo que fiz para conectar com o banco de dados
+// Iniciar a sessão
+session_start();
+
+// Verificar se o formulário foi submetido
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obter o id do produto do formulário
+    $idProduto = $_POST["idProduto"];
+
+    // Verificar se o produto existe
     include 'conexao.php';
-    
-    // Prepara a consulta SQL para deletar o produto
-    $sqlDeletar = $conn->prepare("DELETE FROM produto WHERE nomeProduto = :txtDeletarProduto");
-    
-    $nomeProduto = $_POST['txtDeletarProduto'];
-    
-    $sqlDeletar->bindParam(':txtDeletarProduto', $nomeProduto);
-    
-    // Executa a consulta
-    if ($sqlDeletar->execute()) {
-      echo "Produto deletado com sucesso";
+
+    $comando = $conn->prepare("SELECT COUNT(*) AS total
+    FROM produto
+    WHERE idProduto = :idProduto;");
+    $comando->bindParam(":idProduto", $idProduto);
+    $comando->execute();
+    $total = $comando->fetch()["total"];
+
+    // Excluir o produto
+    if ($total == 1) {
+        $comando = $conn->prepare("DELETE FROM produto WHERE idProduto = :idProduto;");
+        $comando->bindParam(":idProduto", $idProduto);
+        $comando->execute();
+
+        // Exibir uma mensagem de sucesso
+        echo "<script>alert('Produto excluído com sucesso.')</script>";
     } else {
-      echo "Não foi possível deletar o produto";
+        // Exibir uma mensagem de erro
+        echo "<script>alert('Não foi possível excluir o produto.')</script>";
     }
-  }
-    catch(PDOException $e){
-      echo $sqlDeletar . "<br>" . $e->getMessage();
-  }
-  
-  //encerrando a conexão com o banco de dados
-  $conn = null;
 }
 
 ?>
