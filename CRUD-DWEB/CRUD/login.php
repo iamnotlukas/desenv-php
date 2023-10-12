@@ -19,12 +19,12 @@
             <div class="card-login">
               <h1>Login</h1>
               <div class="textfield">
-                <label for="nm_cli">Usuário</label>
-                <input type="text" name="nm_cli" id="nm_cli" placeholder="Usuário">
+                <label>Usuário</label>
+                <input type="text" name="usuarioLogin" placeholder="Usuário">
                 </div>
                 <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha_cli" id="senha_cli" placeholder="Senha">
+                    <label>Senha</label>
+                    <input type="password" name="senhaLogin"  placeholder="Senha">
                   </div>
                   <div class="lembrar-me">
                     <input type="checkbox" name="lembrar">
@@ -40,35 +40,39 @@
 
 
 <?php
-    // Iniciar a sessão
-    session_start();
-    // Verificar se o formulário foi submetido
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obter o nome do usuário e a senha do formulário
-        $nomeUsuario = $_POST["nm_cli"];
-        $senhaUsuario = $_POST["senha_cli"];
+ // Iniciar a sessão
+session_start();
 
-        $senhaArmazenada = $usuario["senha_cli"];
+// Verificar se o formulário foi submetido
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obter o nome do usuário e a senha do formulário
+    $nomeUsuario = $_POST["usuarioLogin"];
+    $senhaUsuario = $_POST["senhaLogin"];
 
+    //hash da senha
+    $senhaHash = password_hash($senhaUsuario, PASSWORD_DEFAULT);
 
-        include 'conexao.php';
+    // Buscar o usuário no banco de dados
+    include 'conexao.php';
 
-        // Buscar o usuário no banco de dados
-        $comando = $conn->prepare("SELECT * FROM usuario WHERE nome_cli = :nm_cli");
-        $comando->bindParam(":nm_cli", $nm_cli);
-        $comando->execute();
-        $usuario = $comando->fetch(PDO::FETCH_ASSOC);
-        // Verificar se o usuário existe e a senha está correta
-        if ($senhaEnviada == $senhaArmazenada) {
-            // Iniciar a sessão
-            $_SESSION["nm_cli"] = $usuario["nm_cli"];
-            // Redirecionar para a página inicial
-            header("Location: index.php");
-            exit;
-        } else {
-            // Exibir uma mensagem de erro
-            echo "Nome de usuário ou senha inválidos.";
-        }
+    $comando = $conn->prepare("SELECT * FROM usuario WHERE nome_cli = :usuarioLogin");
+    $comando->bindParam(":usuarioLogin", $nomeUsuario);
+    $comando->execute();
+    $usuario = $comando->fetch(PDO::FETCH_ASSOC);
+
+    // Verificar se o usuário existe e a senha está correta
+    if ($nomeUsuario == $usuario["nome_cli"] && password_verify($senhaUsuario, $senhaHash)) {
+        // Iniciar a sessão
+        $_SESSION["usuarioLogin"] = $nomeUsuario;
+
+        // Redirecionar para a página inicial
+        header("Location: index.php");
+        exit;
+    } else {
+        // Exibir uma mensagem de erro
+        echo "<script>alert('Nome de usuário ou senha inválidos.')</script>";
     }
+}
+
     ?>
 
