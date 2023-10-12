@@ -16,5 +16,6 @@ CREATE TABLE IF NOT EXISTS produto
   idProduto INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   nomeProduto varchar(50) NOT NULL,
   descricaoProduto varchar(255) NOT NULL,
-  vlProduto NUMBER(10,2) NOT NULL
+  vlProduto NUMERIC(10,2) NOT NULL,
+  imgLink VARCHAR(255) NOT NULL
 )
