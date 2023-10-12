@@ -1,63 +1,159 @@
-/* Estilos gerais */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
 
 body {
+    margin: 0;
     font-family: sans-serif;
-    font-size: 16px;
-  }
-  
-  /* Estilos do formulário */
-  
-  form {
-    width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+}
+
+body * {
     box-sizing: border-box;
-  }
-  
-  .form-control:focus {
-    outline: none;
-    border-color: #000;
-  }
-  
-  .btn {
+}
+
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    background: #201b2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-login>h1{
+    color: aquamarine;
+    font-size: 3vw;
+}
+
+.left-login-image{
+    width: 35vw;
+}
+
+.right-login{
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #2f2841;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.card-login>h1{
+    color: #0f8;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textfield{
     width: 100%;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.textfield>input{
+    width: 100%;
     border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .btn:hover {
-    background-color: #333;
-  }
-  
-  /* Estilos específicos */
-  
-  h1 {
-    text-align: center;
-  }
-  
-  form label {
-    font-weight: bold;
-  }
-  
-  form input {
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #2b2b2bde;
+    font-size: 12pt;
+    box-shadow: 0px 0px 10px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield>label{
+    color: #f0ffffde;
     margin-bottom: 10px;
-  }
-  
+}
+
+.textfield>input::placeholder{
+    color: #f0ffff94;
+}
+
+input[type="submit"]{
+    width: auto;
+    padding: 16px 0px;
+    margin: 25px auto;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+ input[type="button"]{
+    width: auto;
+    padding: 16px 0px;
+    margin: 25px auto;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #00ff8052;
+}
+
+@media only screen and (max-width:950px){
+    .card-login{
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width:600px){
+    .main-login{
+        flex-direction:column;
+
+    }
+    .left-login > h1{
+        display: none;
+    }
+
+    .left-login{
+        width: 100%;
+        height: auto;
+    }
+
+    .right-login{
+        width: 100%;
+        height: auto;
+    }
+
+    .left-login-image{
+        width: 50vw;
+    }
+
+    .card-login{
+        width: 90%;
+    }
+}
