@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="cad.css">
     <title>Cadastro</title>
 </head>
 <body>
@@ -48,7 +48,7 @@ if (!empty($_POST['btncadastro'])){
     $email = $_POST['txtemail'];
     $senha = $_POST['txtsenha'];
 
-    try{    
+    try{   
         //colcoando o arquivo de conexão para realizar a conexão
         include 'conexao.php';
         //verificando se o e-mail já existe no banco de dados
@@ -68,7 +68,7 @@ if (!empty($_POST['btncadastro'])){
     }
 
     catch(PDOException $e){
-        echo $sql . "<br>" . $e->getMessage();
+        echo $sqlEmail . "<br>" . $e->getMessage();
     }
 
     //encerrando a conexão com o banco de dados
