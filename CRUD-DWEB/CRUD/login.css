@@ -37,11 +37,11 @@ body * {
 }
 
 .right-login{
-    width: 50vw;
-    height: 100vh;
+    width: inherit;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .card-login{
