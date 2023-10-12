@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Prod</h1>
+   <h1>Tela de Gestão</h1>
+   <a href="addProduto.php">Adicionar Produto</a>
+   <a href="listarProduto.php">Listar Produtos</a>
+   <a href="updateProduto.php">Atualizar Produto</a>
+   <a href="delProduto.php">Deletar Produto</a>
 </body>
 </html>
