@@ -29,7 +29,7 @@ session_start();
 // Verificar se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obter o id do produto do formulário
-    $idProduto = $_POST["idProduto"];
+    $idProduto = $_POST["txtDeletarProduto"];
 
     // Verificar se o produto existe
     include 'conexao.php';
