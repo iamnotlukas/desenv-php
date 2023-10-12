@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="main-login">
-        <form method="post" action="#">
-
+    <form action="#" method="post" style="width: inherit;margin: 0 auto;display: contents;">
           <div class="right-login" style="flex-wrap:wrap;">
             <div class="card-login">
               <h1>Adicionar Produto</h1>
@@ -31,6 +30,7 @@
                   </div>
                   
                 </div>
+                <br>
                 <input type="submit" value="Adicionar" name="btnAdicionar">
                 <br>
                 <a href="index.php">
