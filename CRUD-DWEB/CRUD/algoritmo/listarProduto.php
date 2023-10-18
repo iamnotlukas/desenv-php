@@ -1,5 +1,5 @@
 <h2>LIsta de Produtos</h2>
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="../style/index.css">
 <?php
 
 include 'conexao.php';
