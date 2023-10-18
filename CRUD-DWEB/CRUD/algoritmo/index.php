@@ -21,7 +21,7 @@
     <a href="listarProduto.php">
       <input type="submit" value="Listar Produto">
     </a>
-    <a href="updateProduto.php">
+    <a href="formUpdate.php">
       <input type="submit" value="Atualizar Produto">
     </a>
   </div>
