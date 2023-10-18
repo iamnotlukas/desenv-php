@@ -11,7 +11,7 @@
     <div class="main-login">
         <div class="left-login">
             <h1>Cadastre-se<br>E entre no sistema</h1>
-            <img src="cadastro.svg" class="left-login-image" alt="personagem animação">
+            <img src="../imagens/cadastro.svg" class="left-login-image" alt="personagem animação">
         </div>
         <form method="post" action="#">
           <div class="right-login">

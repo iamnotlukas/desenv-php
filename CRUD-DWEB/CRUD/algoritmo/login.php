@@ -11,7 +11,7 @@
     <div class="main-login">
         <div class="left-login">
             <h1>Faça login<br>E entre no sistema</h1>
-            <img src="Login-rafiki.svg" class="left-login-image" alt="personagem animação">
+            <img src="../imagens/Login-rafiki.svg" class="left-login-image" alt="personagem animação">
         </div>
         <form method="post" action="#">
 
