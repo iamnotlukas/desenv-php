@@ -1,61 +1,90 @@
-
-<h1>Local de mudar</h1>
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cad.css">
+    <title>Atualizar</title>
+</head>
+<body>
+    
+        <form method="post" action="#">
+         
+              <h1>Atualizar Produto</h1>
+           
+                <label>Insira o ID do Produto:</label>
+                <input type="number" name="BuscarIdProduto" placeholder="Informe o ID do produto">
+                <br>
+                <label for="nm_cli">Novo nome do produto: </label>
+                <input type="text" name="NovoNome" placeholder="Informe o novo nome do Produto">
+              <br>
+                <label>Nova Descrição</label>
+                <input type="text" name="NovaDescri" placeholder="Informe a nova descrição do produto">
+                <br>   
+                <label>Informe o novo valor</label>
+                <input type="password" name="NovoValor" placeholder="Informe o novo valor">
+                <input type="submit" value="Atualizar" name="btnAtualizar">
+        </form>
+      </body>
+</html>
 
 <?php
 
-// Obter o id do produto do formulário
-$idProduto = $_POST["BuscarIdProduto"];
+// Iniciar a sessão
+session_start();
 
+// Verificar se o formulário foi submetido
+if (!empty($_POST['btnAtualizar'])) {
+
+  // Obter o id do produto do formulário
+  $idProduto =$_POST["BuscarIdProduto"];
+  
+  try{
+    
       // Verificar se o produto existe
       include 'conexao.php';
       
-      $sqlVerificar = $conn->prepare("SELECT * FROM produto WHERE idProduto = :BuscarIdProduto;");
-      $sqlVerificar->bindParam(":BuscarIdProduto", $idProduto);
-      $sqlVerificar->execute();
-      $total = $sqlVerificar->fetch(PDO::FETCH_ASSOC);
-      header("Location: formUpdate.php");
-      exit;
+      //obter os valores que o usuário digitou
+      $nomeAtulizar = $_POST['NovoNome'];
+      $descri = $_POST['NovaDescri'];
+      $novoValor = $_POST['NovoValor'];
       
-      // Verifica se o ID do produto foi enviado
-      if ($idProduto == $total["idProduto"]) {
-        // Mostra o formulário para alterar o produto
-        echo '<h3> Altere o produto: ' . $total["nomeProduto"];
-          echo '<form action="#" method="post"><br>';
-          echo '<input type="hidden" name="id"' . $total["idProduto"] . '><br>';
-          echo '<label>Insira o Nome do Produto</label>';
-          echo '<input type="text" name="nomeAtualizar"><br>';
-          echo '<label>Insira a descrição do Produto</label>';
-          echo '<input type="text" name="descri"><br>';
-          echo '<label>Informe o valor do Produto</label>';
-        echo '<input type="number" name="vlAtualizar" step=".01" required><br><br>';
-        echo '<input type="submit" value="Atualizar" name="btnAtualizar">';
-        echo '</form>';
-        
-        // Alterar o produto
-        if (!empty($_POST['btnAtualizar'])) {
-          $sqlAtualizar = $conn->prepare("UPDATE produto
-            nome_cli = :nomeAtualizar,
-            descricaoProduto = :descri,
-            vlProduto = vlAtualizar
+      $idProduto == $_POST['BuscarIdProduto'];
+      
+      // Alterar o produto
+          $sqlAtualizar = $conn->prepare("UPDATE produto SET
+            nomeProduto = :nomeAtualizar,
+            descricaoProduto = :descriAtualizar,
+            vlProduto = :vlAtualizar
           
-            WHERE idProduto = :BuscarIdProduto;");
+            WHERE idProduto = :BuscarIdProduto");
+
+            $sqlAtualizar->bindParam(":nomeAtualizar", $nomeAtulizar);
+            $sqlAtualizar->bindParam(":descriAtualizar", $descri); 
+            $sqlAtualizar->bindParam(":vlAtualizar", $novoValor);
             $sqlAtualizar->bindParam(":BuscarIdProduto", $idProduto);
-            $sqlAtualizar->execute();
+
+           
+
+            //se executar
+            if ($sqlAtualizar->execute()){
+              echo '<script>alert("Produto alterado com sucesso!")</script>';
+            }
+            
+            else{
+              echo '<script>alert("Não foi possível alterar o produto!")<s/cript>';
+            }
+            
+
+
+  } //mostrando erro caso o try dê errado
+    catch(PDOException $e){
+      echo "Error: " . $e->getMessage();
+  }
+
+      //encerrando a conexão com o banco de dados
+      $conn = null; 
+ }
   
-          // Exibir uma mensagem de sucesso
-          echo "<script>alert('Produto alterado com sucesso.')</script>";
-        }
-        else{
-          "<script>alert('Erro ao executar o script')</script>";
-        }
-      }
-
-      else {
-        // Exibir uma mensagem de erro
-        echo "<script>alert('Não foi possível alterar o produto.')</script>";
-      }
-
-
-
 ?>
