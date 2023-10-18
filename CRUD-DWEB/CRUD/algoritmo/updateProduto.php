@@ -26,12 +26,16 @@
 // Iniciar a sessão
 session_start();
 
+
 // Verificar se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  try{
-      // Obter o id do produto do formulário
-       $idProduto = $_POST["BuscarIdProduto"];
 
+
+  // Obter o id do produto do formulário
+  $idProduto =$_POST["BuscarIdProduto"];
+  
+  try{
+    
       // Verificar se o produto existe
       include 'conexao.php';
   
@@ -39,8 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $sqlVerificar->bindParam(":BuscarIdProduto", $idProduto);
       $sqlVerificar->execute();
       $total = $sqlVerificar->fetch(PDO::FETCH_ASSOC);
-      header("Location: formUpdate.php");
-      exit;
+   
 
       // Verifica se o ID do produto foi enviado
       if ($idProduto == $total["idProduto"]) {
@@ -57,15 +60,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<input type="submit" value="Atualizar" name="btnAtualizar">';
         echo '</form>';
       
+        
+
+        
+        
+        
         // Alterar o produto
         if (!empty($_POST['btnAtualizar'])) {
-          $sqlAtualizar = $conn->prepare("UPDATE produto
-            nome_cli = :nomeAtualizar,
-            descricaoProduto = :descri,
-            vlProduto = vlAtualizar
           
-            WHERE idProduto = :BuscarIdProduto;");
+          //obter os valores que o usuário digitou
+          $nomeAtulizar = $_POST['nomeAtualizar'];
+          $descri = $_POST['descri'];
+          $novoValor = $_POST['vlAtualizar'];
+
+          $idProduto == $total["idProduto"];
+
+
+          $sqlAtualizar = $conn->prepare("UPDATE produto SET
+            nomeProduto = :nomeAtualizar,
+            descricaoProduto = :descriAtualizar,
+            vlProduto = :vlAtualizar
+          
+            WHERE idProduto = :BuscarIdProduto");
+
+            $sqlAtualizar->bindParam(":nomeAtualizar", $nomeAtulizar);
+            $sqlAtualizar->bindParam(":descriAtualizar", $descri); 
+            $sqlAtualizar->bindParam(":vlAtualizar", $novoValor);
             $sqlAtualizar->bindParam(":BuscarIdProduto", $idProduto);
+
             $sqlAtualizar->execute();
   
           // Exibir uma mensagem de sucesso
