@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cad.css">
+    <link rel="stylesheet" href="../style/index.css">
     <title>Atualizar</title>
 </head>
 <body>
@@ -25,6 +25,10 @@
                 <label>Informe o novo valor</label>
                 <input type="password" name="NovoValor" placeholder="Informe o novo valor">
                 <input type="submit" value="Atualizar" name="btnAtualizar">
+                <br>
+                <a href="index.php">
+                    <input type="button" value="Tela de Gestão">
+                </a>   
         </form>
       </body>
 </html>
