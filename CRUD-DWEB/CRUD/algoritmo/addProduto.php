@@ -28,8 +28,7 @@
                      <label>Link da Imagem:</label><br>
                         <input type="text" name="imgLink">
                   </div>
-                  
-                </div>
+                  </div>
                 <br>
                 <input type="submit" value="Adicionar" name="btnAdicionar">
                 <br>
