@@ -22,9 +22,7 @@ p, h2,form label{
   margin: 0 auto;
 }
 input[type="button"]{
-
   width: auto;
-  padding: 16px 0px;
   margin: 25px auto;
   border: none;
   border-radius: 8px;
@@ -60,7 +58,6 @@ input {
 
 input[type="submit"] {
   width: auto;
-  padding: 16px 0px;
   margin: 25px auto;
   border: none;
   border-radius: 8px;
