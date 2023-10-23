@@ -1,25 +1,21 @@
 <?php
+// Inicia a sessão PHP
+session_start();
 
-//iniciar a sessao php
-if (!file_exists("../BancoDeDados/create.php")){
-    //resireciona para a pagina de criação do banco de dados
-    header("Location: ../BancoDeDados/create.php);
-    exit;
+// Verifica se as tabelas do banco de dados foram criadas
+if (!file_exists("../BancoDeDados/create.php")) {
+  // Redireciona para a página de criação do banco de dados
+  header("Location: ../BancoDeDados/create.php");
+  exit;
 }
 
-if (!isset($_SESSION['usuarioLogin'])){
-
-   //redirecionando para a pagina de login
-   header("Location: login.php");
-   exit;
-
+// Verifica se o usuário está autenticado
+if (!isset($_SESSION['usuarioLogin'])) {
+  // Redireciona para a página de login
+  header("Location: login.php");
+  exit;
 }
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
