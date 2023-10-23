@@ -63,11 +63,12 @@ if (!empty($_POST['btncadastro'])){
         $sql = "INSERT INTO usuario (nome_cli, email_cli, senha_cli) VALUES ('$nome','$email', '$senha')";
         $conn->exec($sql);
 
-        //usando JavaScript para mandar alerta que o cadastro foi cnoncluido
-        echo "<script>alert('Cadastrado com sucesso!');</script>";
-
+        
         // Redireciona para a página de login
         header("Location: login.php");
+        
+        //usando JavaScript para mandar alerta que o cadastro foi cnoncluido
+        echo "<script>alert('Cadastrado com sucesso!');</script>";
     }
 
     catch(PDOException $e){
