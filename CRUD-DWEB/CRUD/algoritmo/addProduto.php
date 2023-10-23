@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adicionar Produto</title>
-  <link rel="stylesheet" href="../style/login.css">
+  <link rel="stylesheet" href="../style/add.css">
 </head>
 <body>
     <div class="main-login">
@@ -29,12 +29,14 @@
                         <input type="text" name="imgLink">
                   </div>
                   </div>
-                <br>
-                <input type="submit" value="Adicionar" name="btnAdicionar">
-                <br>
-                <a href="index.php">
-                  <input type="button" value="Tela de Gestão">
-                </a>
+                  <div class="button-container">
+                    <br>
+                    <input type="submit" value="Adicionar" name="btnAdicionar">
+                    <br>
+                    <a href="index.php">
+                      <input type="button" value="Tela de Gestão">
+                    </a>
+                  </div>
                 </div>
             </div>
           </div>
