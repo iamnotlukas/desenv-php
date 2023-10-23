@@ -65,6 +65,9 @@ if (!empty($_POST['btncadastro'])){
 
         //usando JavaScript para mandar alerta que o cadastro foi cnoncluido
         echo "<script>alert('Cadastrado com sucesso!');</script>";
+
+        // Redireciona para a página de login
+        header("Location: login.php");
     }
 
     catch(PDOException $e){
