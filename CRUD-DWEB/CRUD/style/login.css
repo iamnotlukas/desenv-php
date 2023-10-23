@@ -12,9 +12,6 @@ body {
 
 }
 
-body * {
-    box-sizing: border-box;
-}
 
 .main-login {
     width: 100vw;
@@ -44,7 +41,7 @@ body * {
 }
 
 .right-login{
-    width: inherit;
+    width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +49,7 @@ body * {
 }
 
 .card-login{
-    width: 60%;
+    width: 70%;
     display: flex;
     justify-content: center;
     align-items: center;
