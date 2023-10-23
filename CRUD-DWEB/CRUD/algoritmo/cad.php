@@ -1,3 +1,25 @@
+<?php
+
+//iniciar a sessao php
+if (!file_exists("../BancoDeDados/create.php")){
+    //resireciona para a pagina de criação do banco de dados
+    header("Location: ../BancoDeDados/create.php);
+    exit;
+}
+
+if (!isset($_SESSION['usuarioLogin'])){
+
+   //redirecionando para a pagina de login
+   header("Location: login.php");
+   exit;
+
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
